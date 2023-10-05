@@ -1,0 +1,96 @@
+type Query{
+	Clients : [Client]
+	byUsername(username : String) : [Client]
+	getC(username : String) : Client
+	user(id : Float) : Client
+	products : [Product]
+	prod(id : Float): Product
+	productsN(name : String) : [Product]
+	productsByName(name : String) : [Product]
+	paniers : [Panier]
+	numbU : Int
+	numbP : Int
+	numbO : Int
+	Earns : Float
+	categories : [Category]
+	categoryList(name : String) : [Category]
+}
+type Mutation{
+	client(c : DTO) : Client,
+	deleteC(id : Float) : String,
+	updateC(id:Float, c : DTO) : String
+	ChangePassword(id:Float, old:String, newPass:String):String
+	auth(id : Float) : Client
+	product(p : ProductDTO) : Product
+	update(id : Float, p : ProductDTO) : String
+	delete(id:Float) : String
+	panier(idC : Float, id : Float) : Panier
+	updateI(id : Float, quantity : Float) : String
+	deleteI(id : Float) : String
+	updateStatus(id :Float, quantity : Float, status : String) : String
+	updateCategory(id : Float, name : String) : String
+	category(name : String) : Category
+	deleteCategory(id : Float) : String
+}
+
+input DTO{
+	username : String
+	name : String
+	email : String
+	tel : String
+	address : String
+	password : String
+
+}
+input ProductDTO{
+	name : String
+	img : String
+	Description : String
+	rating : Float
+	price : Float
+	category : String
+}
+
+
+type Client {
+	id : Float
+	username : String
+	name : String
+	email : String
+	tel : String
+	Address :String
+	roles : [Permission]
+	commands : [Panier]
+}
+type Permission{
+	Id : Float
+	name : String
+}
+
+type Product{
+	id : Float
+	name : String
+	img : String
+	description : String
+	rating : Float
+	price : Float
+	category : Category
+}
+
+type Panier{
+	Id : Float
+	quantity : Float
+	status : Status
+	timestamp : DateTime
+	client : Client
+	product : Product
+}
+enum Status{
+	Pending,Processing,Completed,Cancelled,Shipped
+}
+scalar DateTime
+
+type Category{
+	id : Float
+	name : String
+}
