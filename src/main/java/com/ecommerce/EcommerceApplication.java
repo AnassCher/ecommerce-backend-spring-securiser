@@ -34,25 +34,19 @@ public class EcommerceApplication {
 
 			permissionRepo.save(p);   permissionRepo.save(p1);
 
-			/*Client c = new Client();
-			c.setUsername("Anass123");
-			c.setTel("0608539556");
-			c.setEmail("Anass@gmail.com");
-			c.setName("Anass");
-			c.setPassword("Ana123ss456");
-			//c.getRoles().add(p);*/
-			ClientDTO client = new ClientDTO("Anass123",
-					"Anass",
-					"Anass@gmail.com",
-					"Ana123ss456",
-					"Sale Laayayda",
-					"0608539556");
-			ClientDTO client1 = new ClientDTO("Ayman15",
-					"Anass",
-					"Anass@gmail.com",
-					"Ana123ss456",
-					"Sale Laayayda",
-					"0608539556");
+
+			ClientDTO client = new ClientDTO("Mark123",
+					"Mark",
+					"Mark@gmail.com",
+					"Mark123456",
+					"paris france",
+					"512-658-124");
+			ClientDTO client1 = new ClientDTO("Andre15",
+					"Andre",
+					"Andre@gmail.com",
+					"Andre123456",
+					"London UK",
+					"125-956-451");
 			clientService.createUser(client);
 			clientService.createUser(client1);
 			clientService.affectRole(1L);
